@@ -15,8 +15,7 @@ class Chatbot:
     """Class that implements the chatbot for HW 6."""
 
     def __init__(self):
-        # The chatbot's default name is `moviebot`.
-        self.name = 'moviebot' # TODO: Give your chatbot a new name.
+        self.name = 'cupid'
 
         # This matrix has the following shape: num_movies x num_users
         # The values stored in each row i and column j is the rating for
@@ -42,40 +41,33 @@ class Chatbot:
         chatbot can do and how the user can interact with it.
         """
         return """
-        Your task is to implement the chatbot as detailed in the HW6
-        instructions (README.md).
-
-        To exit: write ":quit" (or press Ctrl-C to force the exit)
-
-        TODO: Write the description for your own chatbot here in the `intro()` function.
+        cupid is a chatbot that recommends movies it thinks you'll <3 love <3
+        
+        you can tell cupid about movies you've enjoyed and movies you've hated, 
+        and it will output new ones for you to watch based on these sentiments.
+        
+        cupid has access to multiple databases, including titles and ratings
+        from MovieLens and reviews from Rotten Tomatoes.
+        
+        have fun chatting and discovering new movies with cupid! <3
+        
+        (to exit: write ":quit" or press ctrl-c)
         """
 
     def greeting(self):
         """Return a message that the chatbot uses to greet the user."""
-        ########################################################################
-        # TODO: Write a short greeting message                                 #
-        ########################################################################
 
-        greeting_message = "How can I help you?"
-
-        ########################################################################
-        #                             END OF YOUR CODE                         #
-        ########################################################################
+        greeting_message = "hello! my name is cupid <3. i'll help you find a new movie to watch and love. tell me about a movie you've seen recently!"
+        
         return greeting_message
 
     def goodbye(self):
         """
         Return a message that the chatbot uses to bid farewell to the user.
         """
-        ########################################################################
-        # TODO: Write a short farewell message                                 #
-        ########################################################################
 
-        goodbye_message = "Have a nice day!"
+        goodbye_message = "thank you for chatting with me! i hope you love the new movies! <3 <3 <3"
 
-        ########################################################################
-        #                          END OF YOUR CODE                            #
-        ########################################################################
         return goodbye_message
 
     def debug(self, line):
@@ -159,13 +151,10 @@ class Chatbot:
         Hints: 
             - What regular expressions would be helpful here? 
         """
-        ########################################################################
-        #                          START OF YOUR CODE                          #
-        ########################################################################                                             
-        return [] # TODO: delete and replace this line
-        ########################################################################
-        #                          END OF YOUR CODE                            #
-        ########################################################################
+        regex = r"\"[^\"]*\""
+        titles = re.findall(regex, user_input)
+                                              
+        return titles
 
     def find_movies_idx_by_title(self, title:str) -> list:
         """ Given a movie title, return a list of indices of matching movies
