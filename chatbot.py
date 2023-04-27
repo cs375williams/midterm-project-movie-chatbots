@@ -275,7 +275,7 @@ class Chatbot:
         tokens = re.findall(no_punc, clarification)
         
         for c in candidates:
-            title_tokens = [t.lower() for t in re.findall(no_punc, self.titles[c][0])]
+            title_tokens = re.findall(no_punc, self.titles[c][0])
             for tok in tokens:
                 if tok.lower() in title_tokens:                    
                     indices.append(c)
